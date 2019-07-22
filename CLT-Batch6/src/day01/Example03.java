@@ -12,9 +12,12 @@ class StaticNonStaticDemo{
 
 static String reference1 = "AAAAA";
 String reference2 = "BBBBB";
+String reference3 = "CCCC";
 
 static void showReferences() { //static data can only access static data number directly
 	//(without creating object)
+	
+	System.out.println(new StaticNonStaticDemo().reference3);
 	
 	System.out.println(reference1);
 	//reference2 can't be call directly, since it not a static
@@ -29,6 +32,7 @@ public class Example03 {
 	public static void main(String []args) {
 		new StaticNonStaticDemo().showVariable();
 		StaticNonStaticDemo.showReferences();
+		
 	}// end of psvm
 	
 	
