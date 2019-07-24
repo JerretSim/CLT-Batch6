@@ -15,7 +15,7 @@ public class DoWhileExample {
 		System.out.println("Wish to continue :(yes/no)");
 		choice = sc.next();
 		}while(!choice.contentEquals("no"));
-		System.out.println("You did well");
+		System.out.println("Thank You!!");
 
 	}
 
