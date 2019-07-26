@@ -18,6 +18,5 @@ public class UserAccount {
 		this.loginPW = loginPW;
 	}
 	
-	
 
 }
