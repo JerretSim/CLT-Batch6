@@ -15,6 +15,11 @@ public class AuthenticationImpl implements Authentication {
 		}
 		return sendStatus;
 	}
-	
+
+	@Override
+	public boolean checkPassword(UserAccount ref) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }
