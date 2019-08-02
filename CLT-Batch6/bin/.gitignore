@@ -1,4 +1,10 @@
+/Databases/
+/Properties/
+/SqlDAO/
+/db/
 /service/
-/pojo/
 /dao/
+/pojo/
 /controller/
+/dbconnection/
+/application/

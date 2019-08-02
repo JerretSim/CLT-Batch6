@@ -1,17 +1,24 @@
 package service;
 
 import dao.LoginVerify;
-import dao.LoginVerifyImpl;
-import pojo.UserAccount;;
+import pojo.UserData;
 
-public class ServiceLoginImpl implements ServiceLogin{
+public class ServiceLoginImpl implements ServiceLogin {
 	
-	UserAccount refuserAccount;
 	LoginVerify refLoginVerify;
 	
 	@Override
-	public void checkStatus(UserAccount ref) {
-		refLoginVerify = new LoginVerifyImpl();   
+	public void checkStatus(UserData ref) {
+		
+		if(refLoginVerify.LoginValidate(ref)==true) {
+			System.out.println("Login Validate");
+		}
+		else
+		{
+			System.out.println("Login Failed..");
+		}
+		
+		
 		
 		
 	}
