@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import dao.EmployeeDAO;
 import dao.EmployeeDAOImpl;
 import db.Connectionn;
@@ -25,6 +27,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 		refEmployeeDAO = new EmployeeDAOImpl();
 		refEmployeeDAO.updateEmployee(refEmployee);
 	}
+
+	@Override
+	public List<Employee> ListEmployee() {
+		refEmployeeDAO = new EmployeeDAOImpl();
+		return refEmployeeDAO.ListEmployee();
+	}
 	
 	
-}
+		
+	}
+

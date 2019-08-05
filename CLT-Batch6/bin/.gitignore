@@ -8,3 +8,6 @@
 /controller/
 /dbconnection/
 /application/
+/presentation/
+/db.properties
+/refEmployeeService/

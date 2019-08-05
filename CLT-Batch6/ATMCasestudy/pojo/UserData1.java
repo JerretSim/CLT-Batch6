@@ -1,12 +1,11 @@
 package pojo;
 
-public class UserData {
+public class UserData1 {
 
 	private String userID;
 	private String password;
-	private int bankBal;
+	private int bankBal ;
 	private String securityKey;
-	
 	public String getUserID() {
 		return userID;
 	}
@@ -31,5 +30,7 @@ public class UserData {
 	public void setSecurityKey(String securityKey) {
 		this.securityKey = securityKey;
 	}
+	
+	
 	
 }

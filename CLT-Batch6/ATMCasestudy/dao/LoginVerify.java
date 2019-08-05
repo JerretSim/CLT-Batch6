@@ -1,8 +1,8 @@
 package dao;
 
-import pojo.UserData;
+import pojo.UserData1;
 
 public interface LoginVerify {
-	boolean LoginValidate(UserData ref);
-	boolean AccountValidate(UserData ref);
+	boolean LoginValidate(UserData1 ref);
+	boolean AccountValidate(UserData1 ref);
 }

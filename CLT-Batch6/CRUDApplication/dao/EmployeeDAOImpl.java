@@ -7,11 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import dao.EmployeeDAO;
 
 import db.Connectionn;
+import dbconnection.DBConnection2;
 import pojo.Employee;
 
 public class EmployeeDAOImpl implements EmployeeDAO {
@@ -20,12 +22,25 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		Connection conRef;
 		PreparedStatement psRef;
 		
+		public  Connection prepareConnection() throws SQLException, ClassNotFoundException{
+
+			String connectionURL = "jdbc:mysql://localhost:3306/clt6";
+
+			String uname = "root";
+			String pwd = "root";
+
+			//Register JDBC Driver
+
+			Class.forName("com.mysql.jdbc.Driver");
+
+			//open a connection
+
+			Connection ref = DriverManager.getConnection(connectionURL, uname, pwd);
+			return ref;
+		}
+		
 		void getConnection() {
-			try {
-				conRef = Connectionn.prepareConnection();
-			} catch(ClassNotFoundException | SQLException e) {
-				System.out.println("DB Connection Error.. ");
-			}
+			conRef = DBConnection2.myConnection();
 		}
 
 		@Override
@@ -87,40 +102,56 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		  
 		@Override
 		public List<Employee> ListEmployee() {
-			 getConnection();
-			  ArrayList<Employee> personlist = new ArrayList<Employee>();
-		        //List<Person> personlist = new List<Person>();
-		        try {
-		        	psRef = conRef.prepareStatement("update employee set name = ?, password = ?, dob = ? where id = ?");
-		
-					
-		            while (srs.next()) {
-		                Employee person = new Employee();
-		                person.setName(srs.getString("name"));
-		                person.setId(srs.getString("Id"));
-		                person.setPassword(srs.getString("password"));
-		                person.setDob(srs.getString("dob"));
-		                personlist.add(person);
-		            }
-		 
-		            System.out.println(personlist.size());
-		            System.out.println(personlist.get(1).getName());
-		            System.out.println(personlist.get(2).getName());
-		            System.out.println(personlist.get(3).getName());
-		            System.out.println(personlist.get(4));
-		 
-		        //System.out.println(namelist.);
-		        } catch (Exception e) {
-		            System.err.println("Got an exception! ");
-		            System.err.println(e.getMessage());
-		        }
-			  }
-			 
+			List<Employee> myList = new ArrayList<>();
+			Statement st;
+			try {
+				st = prepareConnection().createStatement();
+				String sql = "SELECT * FROM Employee";
+				ResultSet rs = st.executeQuery(sql);
+				while(rs.next()) {
+					Employee pu = new Employee();
+					pu.setName(rs.getString(2));
+					pu.setId(rs.getString(1));
+					pu.setPassword(rs.getString(3));
+					pu.setDob(rs.getString(4));
+					myList.add(pu);
+				}
+				} catch (SQLException | ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				return myList;
+	    
 		}
+
+
+		
+
+
 
 		@Override
 		public void getEmployeeById(int id) {
-			// TODO Auto-generated method stub
+			List<Employee> myList = new ArrayList<>();
+			Statement st;
+			try {
+				st = prepareConnection().createStatement();
+				String sql = "SELECT * FROM Employee";
+				ResultSet rs = st.executeQuery(sql);
+				while(rs.next()) {
+					Employee pu = new Employee();
+					pu.setName(rs.getString(2));
+					pu.setId(rs.getString(1));
+					pu.setPassword(rs.getString(3));
+					pu.setDob(rs.getString(4));
+					myList.add(pu);
+				}
+				} catch (SQLException | ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				
 			
 		}
 

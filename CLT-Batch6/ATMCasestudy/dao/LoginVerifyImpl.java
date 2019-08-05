@@ -1,10 +1,10 @@
 package dao;
-import pojo.UserData;
+import pojo.UserData1;
 
 public class LoginVerifyImpl implements LoginVerify {
 
 	@Override
-	public boolean LoginValidate(UserData ref) {
+	public boolean LoginValidate(UserData1 ref) {
 		if(ref.getUserID().equals("xyz@gmail.com")) {
 			return true;
 		}
@@ -13,7 +13,7 @@ public class LoginVerifyImpl implements LoginVerify {
 	}
 
 	@Override
-	public boolean AccountValidate(UserData ref) {
+	public boolean AccountValidate(UserData1 ref) {
 		if(ref.getUserID().equals("xyz@gmail.com") && ref.getPassword().equals("xyz1234")) {
 			return true;
 		}
