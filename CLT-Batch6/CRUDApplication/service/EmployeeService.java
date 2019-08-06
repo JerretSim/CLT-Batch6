@@ -11,5 +11,6 @@ public interface EmployeeService {
 	public void CallAddEmployee(Employee refEmployee);
 	public void CallUpdateEmployee(Employee refEmployee);
 	public  List<Employee> ListEmployee();
-	
+	public void CallGetEmployeeID(Employee refEmployee);
+	public void CallRemoveEmployeeID(Employee refEmployee);
 }

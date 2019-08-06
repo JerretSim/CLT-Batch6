@@ -66,25 +66,26 @@ public class ControllerLogin {
 		refUserData.setUserID(userID);
 		refUserData.setPassword(password);
 		refServiceLogin.checkLogin(refUserData);
-		BalanceOption();
+		BalanceOption(refUserData);
 		
 		
 		
 	}	
 	
-	public void BalanceOption() {
+	public void BalanceOption(UserData1 ref) {
+		System.out.println(ref.getBankBal());
 		System.out.println("1.Check Available Bank Balance \n2.Deposit Amount \n3.Withdraw Amount");
 		Scanner sc = new Scanner(System.in);
 		int choice = sc.nextInt();
 		switch(choice) {
 		case 1 : 
-			refServiceLogin.checkBalance(refUserData);
+			refServiceLogin.checkBalance(ref);
 			break;
 		case 2 : 
-			refServiceLogin.checkDeposit(refUserData);
+			refServiceLogin.checkDeposit(ref);
 			break;
 		case 3 : 
-			refServiceLogin.checkWithdraw(refUserData);
+			refServiceLogin.checkWithdraw(ref);
 			break;
 			default : 
 				System.out.println("Invalid Choice");

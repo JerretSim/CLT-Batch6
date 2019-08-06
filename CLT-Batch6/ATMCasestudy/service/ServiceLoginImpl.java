@@ -28,9 +28,9 @@ public class ServiceLoginImpl implements ServiceLogin {
 	@Override
 	public void checkBalance(UserData1 ref) {
 		
-		System.out.println("Your Balanced Amount is : " + ref.getBankBal());
+		System.out.println(ref.getBankBal());
 		ControllerLogin refControllerLogin = new ControllerLogin();
-		refControllerLogin.BalanceOption();
+		refControllerLogin.BalanceOption(ref);
 		
 	}
 	
@@ -46,13 +46,14 @@ public class ServiceLoginImpl implements ServiceLogin {
 		int total = ref.getBankBal() + amount;
 		ref.setBankBal(total);
 		System.out.println(amount + " Deposited succesfully");
+		System.out.println(ref.getBankBal());
 		System.out.println("Do you wish to continue? Y/N ");
 		String choice = input.next();
 		if(choice.equals("Y")){
 			checkDeposit(ref);
 		} else {
 			
-			refControllerLogin.BalanceOption();
+			refControllerLogin.BalanceOption(ref);
 		}
 	
 		
@@ -76,7 +77,7 @@ public class ServiceLoginImpl implements ServiceLogin {
 				checkWithdraw(ref);
 			} else {
 				
-				refControllerLogin.BalanceOption();
+				refControllerLogin.BalanceOption(ref);
 			}
 		} else {
 			
@@ -89,7 +90,7 @@ public class ServiceLoginImpl implements ServiceLogin {
 			if(choice.equals("Y")){
 				checkWithdraw(ref);
 			} else {
-				refControllerLogin.BalanceOption();
+				refControllerLogin.BalanceOption(ref);
 			}
 			}
 		}

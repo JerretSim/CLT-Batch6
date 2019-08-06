@@ -131,35 +131,52 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 
 		@Override
-		public void getEmployeeById(int id) {
-			List<Employee> myList = new ArrayList<>();
+		public void getEmployeeID(String id) {
 			Statement st;
 			try {
 				st = prepareConnection().createStatement();
-				String sql = "SELECT * FROM Employee";
+				String sql = "SELECT * FROM Employee WHERE ID = " + id +""; 
 				ResultSet rs = st.executeQuery(sql);
 				while(rs.next()) {
 					Employee pu = new Employee();
-					pu.setName(rs.getString(2));
-					pu.setId(rs.getString(1));
-					pu.setPassword(rs.getString(3));
-					pu.setDob(rs.getString(4));
-					myList.add(pu);
+					System.out.println("ID : "+rs.getString(1)+" Name : "+rs.getString(2));
 				}
-				} catch (SQLException | ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			}catch (ClassNotFoundException e) {
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 
 				
 			
-		}
+		
 
 		@Override
-		public void removeEmployee(int id) {
-			// TODO Auto-generated method stub
+		public void removeEmployeeID(String id) {
+			Statement st;
+			try {
+				st = prepareConnection().createStatement();
+				String sql = "DELETE  FROM Employee WHERE ID = " + id +""; 
+				st.executeUpdate(sql);
+			System.out.println("Delete Successful");
+				
+			}catch (ClassNotFoundException e) {
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		}
-	}
+
+	
+			
+		
+			
+		}
+	
 
 
